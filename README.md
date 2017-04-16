@@ -1,0 +1,7 @@
+# BouncingView
+
+1.从看源码得知，DecorView位最外层的一个View,然后还内套了一层LinearLayout，LinearLayout中还有一个vertical方向的ViewStub与FrameLayout,
+查看源码screen_sample布局(点击PhoneWindow中的setContentView中查看generateLayout方法中，查看screen_sample布局),得到这个FrameLayout的id，然后再这个FrameLayou上进行添加布局
+2.为了使用简便，仿Toast.makeToast.show方法进行封装
+3.为了使这个BouncingView的使用方便，因此，自定义一个控件，继承View，通过onDraw()方法，进行绘制贝塞尔曲线，通过ValueAnimator动画与invalidate进行重绘，
+继而再通过动画的监听事件，通过回调接口暴露，RecyclerView进行赋值操作，RecyclerView自己也实现布局动画(该布局动画只对ViewGroup有效)
